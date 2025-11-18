@@ -1,2 +1,2 @@
 ### Aim of the experiment
-To study the working principle and impact characteristics of a gravity drop hammer.
+To study the working principle and operation of Upsetting and Extrusion Presses.
