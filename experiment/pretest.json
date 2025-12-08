@@ -2,38 +2,90 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the primary objective of the upsetting process in manufacturing?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "To reduce the length and increase the cross-sectional area",
+        "b": "To increase both length and diameter",
+        "c": "To remove surface defects",
+        "d": "To convert molten metal into solid form"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Upsetting increases the cross-sectional area by compressing the metal axially.",
+        "b": "Upsetting does not increase length.",
+        "c": "Surface finishing is not the main goal of upsetting.",
+        "d": "This describes casting, not upsetting."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which force is mainly applied during the upsetting process?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Tensile force",
+        "b": "Shear force",
+        "c": "Compressive force",
+        "d": "Centrifugal force"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Upsetting does not involve pulling forces.",
+        "b": "Shear is not dominant in upsetting.",
+        "c": "Compressing the workpiece axially is key in upsetting.",
+        "d": "Centrifugal force is not used in this process."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In which process is metal forced to flow through a die opening?",
+      "answers": {
+        "a": "Upsetting",
+        "b": "Rolling",
+        "c": "Extrusion",
+        "d": "Forging"
+      },
+      "explanations": {
+        "a": "Upsetting does not use a die opening.",
+        "b": "Rolling reduces thickness using rollers.",
+        "c": "Extrusion pushes metal through a die to form a uniform cross-section.",
+        "d": "Forging is a broader category but does not always involve die flow."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is a common product made using the extrusion process?",
+      "answers": {
+        "a": "Bolts",
+        "b": "Rivets",
+        "c": "Aluminum rods",
+        "d": "Gears"
+      },
+      "explanations": {
+        "a": "Bolts are usually made by upsetting.",
+        "b": "Rivets are typically forged.",
+        "c": "Extrusion is commonly used for producing long uniform aluminum sections.",
+        "d": "Gears require machining or molding."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which type of extrusion is performed at temperatures above the recrystallization temperature?",
+      "answers": {
+        "a": "Cold extrusion",
+        "b": "Warm extrusion",
+        "c": "Hot extrusion",
+        "d": "Impact extrusion"
+      },
+      "explanations": {
+        "a": "Cold extrusion is performed at room temperature.",
+        "b": "Warm extrusion is done at moderately elevated temperatures.",
+        "c": "Hot extrusion is carried out above the recrystallization temperature.",
+        "d": "Impact extrusion is a high-speed cold process."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
     }
   ]
 }
+
