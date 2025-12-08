@@ -2,90 +2,89 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What is the primary objective of the upsetting process in manufacturing?",
+      "question": "Which defect is most commonly associated with improper upsetting operations?",
       "answers": {
-        "a": "To reduce the length and increase the cross-sectional area",
-        "b": "To increase both length and diameter",
-        "c": "To remove surface defects",
-        "d": "To convert molten metal into solid form"
+        "a": "Buckling",
+        "b": "Folding",
+        "c": "Barreling",
+        "d": "Hot tearing"
       },
       "explanations": {
-        "a": "Upsetting increases the cross-sectional area by compressing the metal axially.",
-        "b": "Upsetting does not increase length.",
-        "c": "Surface finishing is not the main goal of upsetting.",
-        "d": "This describes casting, not upsetting."
+        "a": "Buckling occurs when the length-to-diameter ratio is too large.",
+        "b": "Folding usually occurs in rolling processes.",
+        "c": "Barreling is a normal effect due to friction, not necessarily improper upsetting.",
+        "d": "Hot tearing is associated with casting."
       },
       "correctAnswer": "a",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
     },
     {
-      "question": "Which force is mainly applied during the upsetting process?",
+      "question": "Why is lubrication important in the extrusion process?",
       "answers": {
-        "a": "Tensile force",
-        "b": "Shear force",
-        "c": "Compressive force",
-        "d": "Centrifugal force"
+        "a": "To improve surface finish and reduce friction",
+        "b": "To increase metal hardness",
+        "c": "To increase extrusion temperature",
+        "d": "To change the composition of metal"
       },
       "explanations": {
-        "a": "Upsetting does not involve pulling forces.",
-        "b": "Shear is not dominant in upsetting.",
-        "c": "Compressing the workpiece axially is key in upsetting.",
-        "d": "Centrifugal force is not used in this process."
+        "a": "Lubrication reduces friction, extrusion force, and improves surface quality.",
+        "b": "Hardness is affected by deformation and heat treatment.",
+        "c": "Lubrication does not control temperature directly.",
+        "d": "Composition remains unchanged."
       },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
     },
     {
-      "question": "In which process is metal forced to flow through a die opening?",
+      "question": "In upsetting, what happens if the height-to-diameter ratio exceeds the recommended limit?",
       "answers": {
-        "a": "Upsetting",
-        "b": "Rolling",
-        "c": "Extrusion",
-        "d": "Forging"
+        "a": "Uniform deformation occurs",
+        "b": "Workpiece cracks immediately",
+        "c": "Buckling of the workpiece may occur",
+        "d": "Material becomes brittle"
       },
       "explanations": {
-        "a": "Upsetting does not use a die opening.",
-        "b": "Rolling reduces thickness using rollers.",
-        "c": "Extrusion pushes metal through a die to form a uniform cross-section.",
-        "d": "Forging is a broader category but does not always involve die flow."
+        "a": "Uniform deformation requires proper ratios.",
+        "b": "Cracking is not instantaneous.",
+        "c": "Excessive height leads to instability and buckling.",
+        "d": "Brittleness is material-dependent, not geometry-based."
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
     },
     {
-      "question": "Which of the following is a common product made using the extrusion process?",
+      "question": "What is the main advantage of hot extrusion over cold extrusion?",
       "answers": {
-        "a": "Bolts",
-        "b": "Rivets",
-        "c": "Aluminum rods",
-        "d": "Gears"
+        "a": "Better dimensional accuracy",
+        "b": "Lower extrusion force requirement",
+        "c": "Superior surface finish",
+        "d": "No need for lubrication"
       },
       "explanations": {
-        "a": "Bolts are usually made by upsetting.",
-        "b": "Rivets are typically forged.",
-        "c": "Extrusion is commonly used for producing long uniform aluminum sections.",
-        "d": "Gears require machining or molding."
+        "a": "Cold extrusion generally provides better accuracy.",
+        "b": "Hot extrusion reduces flow stress of the material.",
+        "c": "Surface finish is usually better in cold extrusion.",
+        "d": "Lubrication is still required."
       },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
     },
     {
-      "question": "Which type of extrusion is performed at temperatures above the recrystallization temperature?",
+      "question": "Why is upsetting commonly used in bolt and fastener manufacturing?",
       "answers": {
-        "a": "Cold extrusion",
-        "b": "Warm extrusion",
-        "c": "Hot extrusion",
-        "d": "Impact extrusion"
+        "a": "It increases bolt length",
+        "b": "It allows head formation by increasing cross-section",
+        "c": "It produces hollow products",
+        "d": "It eliminates the need for machining threads"
       },
       "explanations": {
-        "a": "Cold extrusion is performed at room temperature.",
-        "b": "Warm extrusion is done at moderately elevated temperatures.",
-        "c": "Hot extrusion is carried out above the recrystallization temperature.",
-        "d": "Impact extrusion is a high-speed cold process."
+        "a": "Upsetting reduces length.",
+        "b": "Bolt heads are formed by localized upsetting.",
+        "c": "Hollow products are made by extrusion or piercing.",
+        "d": "Threads still require rolling or cutting."
       },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
     }
   ]
 }
-
