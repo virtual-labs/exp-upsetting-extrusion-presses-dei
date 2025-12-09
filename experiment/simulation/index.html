@@ -7,13 +7,15 @@
     <style>
         :root {
             --primary: #0056b3; /* Academic Blue */
+            --primary-dark: #004494;
             --secondary: #00a8cc;
             --accent: #f0f4f8;
             --text-dark: #2d3436;
             --text-light: #636e72;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --radius: 12px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --header-height: 70px;
         }
 
         * {
@@ -26,20 +28,23 @@
         body {
             background-color: #f7f9fc;
             color: var(--text-dark);
-            height: 100vh;
+            height: 100vh; /* Force full viewport height */
             display: flex;
             flex-direction: column;
+            overflow: hidden; /* Prevent body scroll */
         }
 
-        /* Header */
+        /* --- Header --- */
         header {
+            height: var(--header-height);
             background: var(--white);
-            padding: 1rem 2rem;
+            padding: 0 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 100;
+            flex-shrink: 0;
         }
 
         .logo-area {
@@ -49,172 +54,212 @@
         }
 
         .logo-area img {
-            height: 50px;
+            height: 45px; /* Adjust based on your actual logo */
             width: auto;
         }
 
         .titles h1 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary);
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .titles p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
         }
 
-        /* Main Layout */
+        /* --- Main Layout --- */
         main {
             display: flex;
-            flex: 1;
-            overflow: hidden; /* Prevents full page scroll, handles inner scroll */
-            padding: 2rem;
-            gap: 2rem;
+            flex: 1; /* Take remaining height */
+            padding: 1rem;
+            gap: 1rem;
+            height: calc(100vh - var(--header-height));
         }
 
-        /* Left Column: Video Player & Description */
+        /* --- Left Column: Video & Info --- */
         .stage-area {
-            flex: 2;
+            flex: 3;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
-            padding-right: 10px;
+            gap: 1rem;
+            height: 100%;
+            overflow: hidden;
         }
 
-        .video-container {
+        /* Video Wrapper */
+        .video-wrapper {
+            flex-shrink: 0; /* Don't shrink video */
             background: #000;
             border-radius: var(--radius);
-            overflow: hidden;
             box-shadow: var(--shadow);
             position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            width: 100%;
+            /* 16:9 Aspect Ratio hack not needed with flex, 
+               but max-height ensures it fits on screen */
+            max-height: 60vh; 
+            display: flex;
+            justify-content: center;
+            background: #000;
         }
 
         video {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
+            max-height: 60vh;
             outline: none;
+            border-radius: var(--radius);
         }
 
+        /* Info Card */
         .info-card {
             background: var(--white);
-            margin-top: 1.5rem;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: var(--radius);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            animation: fadeIn 0.5s ease;
+            box-shadow: var(--shadow);
+            overflow-y: auto; /* Scroll text if it's too long */
+            flex-grow: 1; /* Fill remaining vertical space */
+            border: 1px solid #eee;
         }
 
         .info-card h2 {
             color: var(--primary);
             margin-bottom: 0.5rem;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
 
-        .info-card .category-badge {
+        .category-badge {
             display: inline-block;
-            background: var(--accent);
+            background: #e3f2fd;
             color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .info-card p {
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--text-light);
+            font-size: 0.95rem;
         }
 
-        /* Right Column: Playlist/Controls */
+        /* --- Right Column: Tabs & Playlist --- */
         .sidebar {
             flex: 1;
             background: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            overflow: hidden;
             display: flex;
             flex-direction: column;
+            min-width: 300px;
             max-width: 400px;
+            height: 100%;
+            overflow: hidden;
+            border: 1px solid #eee;
         }
 
-        .sidebar-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            background: var(--primary);
-            color: white;
-        }
-
-        .playlist-container {
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .category-header {
+        /* Tabs */
+        .tabs {
+            display: flex;
             background: #f1f3f5;
-            padding: 1rem 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            border-bottom: 1px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn:hover {
+            background: rgba(0,0,0,0.03);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            background: var(--white);
+        }
+
+        /* Playlist List */
+        .playlist-container {
+            flex: 1;
+            overflow-y: auto; /* Scroll only the list */
         }
 
         .video-btn {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Align top for multi-line titles */
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1rem;
             border: none;
             background: transparent;
             text-align: left;
             cursor: pointer;
-            border-bottom: 1px solid #f0f0f0;
-            transition: all 0.2s ease;
+            border-bottom: 1px solid #f9f9f9;
+            transition: background 0.2s;
             gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
         }
 
         .video-btn:hover {
             background-color: var(--accent);
-            padding-left: 1.8rem;
         }
 
         .video-btn.active {
             background-color: #e3f2fd;
             border-left: 4px solid var(--primary);
-            color: var(--primary);
+            color: var(--primary-dark);
             font-weight: 600;
         }
 
         .play-icon {
-            font-size: 1.2rem;
-            opacity: 0.5;
+            font-size: 0.8rem;
+            margin-top: 3px;
+            opacity: 0.6;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive Design */
+        /* --- Responsive --- */
         @media (max-width: 900px) {
-            main {
-                flex-direction: column;
+            body {
                 height: auto;
                 overflow: auto;
             }
+            main {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem;
+            }
+            .stage-area {
+                height: auto;
+                flex: none;
+            }
+            .video-wrapper {
+                max-height: none;
+                height: auto;
+                padding-top: 56.25%; /* Force 16:9 on mobile */
+            }
+            video {
+                position: absolute;
+                top: 0; left: 0; height: 100%;
+            }
             .sidebar {
                 max-width: 100%;
-                height: 400px;
+                height: 500px; /* Fixed height for list on mobile */
             }
         }
     </style>
@@ -229,29 +274,28 @@
                 <p>Department of Mechanical Engineering</p>
             </div>
         </div>
-        <div>
-            </div>
     </header>
 
     <main>
         <section class="stage-area">
-            <div class="video-container">
+            <div class="video-wrapper">
                 <video id="mainPlayer" controls poster="">
                     <source src="" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
 
-            <div class="info-card" id="infoCard">
-                <span class="category-badge" id="vidCategory">Select a Video</span>
-                <h2 id="vidTitle">Welcome to the Virtual Lab</h2>
-                <p id="vidDesc">Please select an experiment from the list on the right to begin the simulation. These videos demonstrate various metal forming processes including Upsetting and Extrusion.</p>
+            <div class="info-card">
+                <span class="category-badge" id="vidCategory">Select Experiment</span>
+                <h2 id="vidTitle">Welcome to the Lab</h2>
+                <p id="vidDesc">Select an experiment category from the tabs on the right ("Upsetting" or "Extrusion"), then click a video to begin the simulation.</p>
             </div>
         </section>
 
         <section class="sidebar">
-            <div class="sidebar-header">
-                <h3>Experiment List</h3>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('Upsetting Presses')">Upsetting</button>
+                <button class="tab-btn" onclick="switchTab('Extrusion Presses')">Extrusion</button>
             </div>
             <div class="playlist-container" id="playlist">
                 </div>
@@ -259,7 +303,7 @@
     </main>
 
     <script>
-        // Data Structure extracted from your HTML list
+        // Data
         const experiments = [
             {
                 category: "Upsetting Presses",
@@ -291,63 +335,78 @@
             }
         ];
 
+        // Elements
         const playlistEl = document.getElementById('playlist');
         const player = document.getElementById('mainPlayer');
         const titleEl = document.getElementById('vidTitle');
         const descEl = document.getElementById('vidDesc');
         const catEl = document.getElementById('vidCategory');
+        const tabButtons = document.querySelectorAll('.tab-btn');
 
-        // Function to load the playlist
-        function initPlaylist() {
-            experiments.forEach(group => {
-                // Create Category Header
-                const catHeader = document.createElement('div');
-                catHeader.className = 'category-header';
-                catHeader.innerText = group.category;
-                playlistEl.appendChild(catHeader);
+        // Initial State
+        let currentCategory = "Upsetting Presses";
 
-                // Create Buttons for each video
-                group.items.forEach((item, index) => {
+        function switchTab(categoryName) {
+            currentCategory = categoryName;
+            
+            // Update Tab UI
+            tabButtons.forEach(btn => {
+                if(btn.innerText.includes(categoryName.split(' ')[0])) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            renderPlaylist();
+        }
+
+        function renderPlaylist() {
+            playlistEl.innerHTML = ''; // Clear current list
+            
+            // Find data for current category
+            const categoryData = experiments.find(e => e.category === currentCategory);
+
+            if (categoryData) {
+                categoryData.items.forEach(item => {
                     const btn = document.createElement('button');
                     btn.className = 'video-btn';
+                    
+                    // Check if this video is currently playing to keep highlight
+                    const currentSrc = player.getAttribute('src'); // Use getAttribute to avoid full URL matching issues
+                    if(currentSrc === item.path) {
+                        btn.classList.add('active');
+                    }
+
                     btn.innerHTML = `<span class="play-icon">▶</span> ${item.title}`;
                     
                     btn.addEventListener('click', () => {
-                        loadVideo(item, group.category, btn);
+                        loadVideo(item, categoryData.category, btn);
                     });
-
+                    
                     playlistEl.appendChild(btn);
                 });
-            });
+            }
         }
 
-        // Function to switch video
         function loadVideo(item, category, btnElement) {
-            // Update Active State in UI
+            // Remove active class from all buttons
             document.querySelectorAll('.video-btn').forEach(b => b.classList.remove('active'));
+            // Add to clicked
             btnElement.classList.add('active');
 
-            // Update Video Source
+            // Play Video
             player.src = item.path;
             player.play();
 
-            // Update Text Info with Animation Reset
-            const infoCard = document.getElementById('infoCard');
-            infoCard.style.animation = 'none';
-            infoCard.offsetHeight; /* trigger reflow */
-            infoCard.style.animation = 'fadeIn 0.5s ease';
-
+            // Update Info
             titleEl.innerText = item.title;
             descEl.innerText = item.desc;
             catEl.innerText = category;
         }
 
-        // Initialize
-        initPlaylist();
-        
-        // Auto-load first video (Optional)
-        // const firstBtn = document.querySelector('.video-btn');
-        // if(firstBtn) firstBtn.click();
+        // Initialize view
+        switchTab('Upsetting Presses'); 
 
     </script>
 </body>
