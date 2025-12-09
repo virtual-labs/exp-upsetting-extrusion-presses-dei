@@ -1,13 +1,354 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Forming Virtual Lab - Simulation</title>
+    <style>
+        :root {
+            --primary: #0056b3; /* Academic Blue */
+            --secondary: #00a8cc;
+            --accent: #f0f4f8;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            height: 50px;
+            width: auto;
+        }
+
+        .titles h1 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .titles p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Main Layout */
+        main {
+            display: flex;
+            flex: 1;
+            overflow: hidden; /* Prevents full page scroll, handles inner scroll */
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        /* Left Column: Video Player & Description */
+        .stage-area {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .video-container {
+            background: #000;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
+
+        .info-card {
+            background: var(--white);
+            margin-top: 1.5rem;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .info-card h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .info-card .category-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* Right Column: Playlist/Controls */
+        .sidebar {
+            flex: 1;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            background: var(--primary);
+            color: white;
+        }
+
+        .playlist-container {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .category-header {
+            background: #f1f3f5;
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .video-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+            gap: 10px;
+        }
+
+        .video-btn:hover {
+            background-color: var(--accent);
+            padding-left: 1.8rem;
+        }
+
+        .video-btn.active {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .play-icon {
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+                height: auto;
+                overflow: auto;
+            }
+            .sidebar {
+                max-width: 100%;
+                height: 400px;
+            }
+        }
+    </style>
 </head>
 <body>
-		<!-- Your code goes here-->
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+    <header>
+        <div class="logo-area">
+            <img src="dei.png" alt="Institute Logo">
+            <div class="titles">
+                <h1>Virtual Lab Simulation</h1>
+                <p>Department of Mechanical Engineering</p>
+            </div>
+        </div>
+        <div>
+            </div>
+    </header>
+
+    <main>
+        <section class="stage-area">
+            <div class="video-container">
+                <video id="mainPlayer" controls poster="">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="info-card" id="infoCard">
+                <span class="category-badge" id="vidCategory">Select a Video</span>
+                <h2 id="vidTitle">Welcome to the Virtual Lab</h2>
+                <p id="vidDesc">Please select an experiment from the list on the right to begin the simulation. These videos demonstrate various metal forming processes including Upsetting and Extrusion.</p>
+            </div>
+        </section>
+
+        <section class="sidebar">
+            <div class="sidebar-header">
+                <h3>Experiment List</h3>
+            </div>
+            <div class="playlist-container" id="playlist">
+                </div>
+        </section>
+    </main>
+
+    <script>
+        // Data Structure extracted from your HTML list
+        const experiments = [
+            {
+                category: "Upsetting Presses",
+                items: [
+                    { title: "Gravity Drop Hammer - Description", path: "Upseting_Presses/GravityDH.mp4", desc: "A detailed description of the Gravity Drop Hammer mechanism, focusing on the potential energy conversion used to deform the workpiece." },
+                    { title: "Gravity Drop Hammer - Kinematics", path: "Upseting_Presses/GRAVITY_DROP_HAMMER.mp4", desc: "Simulation showing the kinematic analysis of the drop hammer during operation, highlighting velocity and impact forces." },
+                    { title: "Knuckle-joint Press", path: "Upseting_Presses/KJ.mp4", desc: "Demonstration of the Knuckle-joint press, ideal for operations requiring high force at the bottom of the stroke." },
+                    { title: "Hydraulic Press Type-1", path: "Upseting_Presses/HP1.mp4", desc: "First configuration of a Hydraulic Press, utilizing fluid pressure to generate compressive force." },
+                    { title: "Hydraulic Press Type-2", path: "Upseting_Presses/HP2.mp4", desc: "Second configuration variant of the Hydraulic Press system." },
+                    { title: "Hydraulic Press Type-3", path: "Upseting_Presses/HP3.mp4", desc: "Third configuration variant showing distinct operational characteristics." },
+                    { title: "Mechanical Press", path: "Upseting_Presses/Mechanicalpress.mp4", desc: "A standard Mechanical Press setup driven by a flywheel and motor system." },
+                    { title: "Screw Press", path: "Upseting_Presses/screw_press.mp4", desc: "A friction screw press where energy is stored in a rotating flywheel." }
+                ]
+            },
+            {
+                category: "Extrusion Presses",
+                items: [
+                    { title: "Direct Extrusion Press", path: "Extrusion_Presses/Cold_Ext_fig1.mp4", desc: "Visualization of the Direct Extrusion process where the billet is pushed through the die." },
+                    { title: "Downward Indirect Extrusion", path: "Extrusion_Presses/Cold_Ext_fig2.mp4", desc: "Indirect extrusion setup oriented downwards, reducing friction forces." },
+                    { title: "Upward Indirect Extrusion", path: "Extrusion_Presses/Indirect_ext_2D2.mp4", desc: "Indirect extrusion process with the ram moving upwards." },
+                    { title: "Direct Extrusion with Mandrel", path: "Extrusion_Presses/ext3.mp4", desc: "Extrusion process utilizing a mandrel to create hollow cross-sections." },
+                    { title: "Direct Extrusion with Die", path: "Extrusion_Presses/extrusion1.mp4", desc: "Focused view on the die interaction during direct extrusion." },
+                    { title: "Indirect Extrusion with Die", path: "Extrusion_Presses/Indirect_ext_2D1.mp4", desc: "Die interaction analysis during the indirect extrusion process." },
+                    { title: "Extrusion with Pressing Tool", path: "Extrusion_Presses/Extrusion_process1.mp4", desc: "Detailed look at the pressing tool assembly." },
+                    { title: "Direct Extrusion - Industrial", path: "Extrusion_Presses/extrusion_process2.mp4", desc: "Simulation of a full-scale industrial direct extrusion setup." },
+                    { title: "Indirect Extrusion - Industrial", path: "Extrusion_Presses/indirect_extrusion.mp4", desc: "Simulation of a full-scale industrial indirect extrusion setup." },
+                    { title: "Hydrostatic Extrusion Press", path: "Extrusion_Presses/Hydrostatic_Extrusion.mp4", desc: "Hydrostatic extrusion utilizing fluid pressure to surround the billet, eliminating friction." }
+                ]
+            }
+        ];
+
+        const playlistEl = document.getElementById('playlist');
+        const player = document.getElementById('mainPlayer');
+        const titleEl = document.getElementById('vidTitle');
+        const descEl = document.getElementById('vidDesc');
+        const catEl = document.getElementById('vidCategory');
+
+        // Function to load the playlist
+        function initPlaylist() {
+            experiments.forEach(group => {
+                // Create Category Header
+                const catHeader = document.createElement('div');
+                catHeader.className = 'category-header';
+                catHeader.innerText = group.category;
+                playlistEl.appendChild(catHeader);
+
+                // Create Buttons for each video
+                group.items.forEach((item, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'video-btn';
+                    btn.innerHTML = `<span class="play-icon">▶</span> ${item.title}`;
+                    
+                    btn.addEventListener('click', () => {
+                        loadVideo(item, group.category, btn);
+                    });
+
+                    playlistEl.appendChild(btn);
+                });
+            });
+        }
+
+        // Function to switch video
+        function loadVideo(item, category, btnElement) {
+            // Update Active State in UI
+            document.querySelectorAll('.video-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Update Video Source
+            player.src = item.path;
+            player.play();
+
+            // Update Text Info with Animation Reset
+            const infoCard = document.getElementById('infoCard');
+            infoCard.style.animation = 'none';
+            infoCard.offsetHeight; /* trigger reflow */
+            infoCard.style.animation = 'fadeIn 0.5s ease';
+
+            titleEl.innerText = item.title;
+            descEl.innerText = item.desc;
+            catEl.innerText = category;
+        }
+
+        // Initialize
+        initPlaylist();
+        
+        // Auto-load first video (Optional)
+        // const firstBtn = document.querySelector('.video-btn');
+        // if(firstBtn) firstBtn.click();
+
+    </script>
 </body>
 </html>
