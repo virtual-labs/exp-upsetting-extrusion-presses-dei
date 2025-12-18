@@ -1,4 +1,3 @@
-# Procedure
 
 ## 1. Upsetting Press 
 The machine cycle of an upsetting press relies on the mechanical synchronization of the clamping and heading slides.
