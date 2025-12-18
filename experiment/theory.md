@@ -59,5 +59,3 @@ To manage forces ranging from **500 to 10,000 tons**, the press frame must be ex
 | **Tooling Stress** | Repeated Thermal Shock & Impact | Constant High Pressure & Friction |
 | **Orientation** | Primarily Horizontal | Horizontal (Standard) or Vertical |
 
----
-*End of Documentation*
