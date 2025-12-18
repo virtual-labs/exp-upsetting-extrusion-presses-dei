@@ -1,1 +1,1 @@
-## Equipment’s “Upsetting and Extrusion Presses”
+## Upsetting and Extrusion Presses
