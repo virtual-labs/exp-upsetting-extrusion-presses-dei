@@ -2,89 +2,89 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Which defect is most commonly associated with improper upsetting operations?",
+      "question": "Which specific phenomenon occurs if the extrusion speed is too high, leading to surface cracking of the profile?",
       "answers": {
-        "a": "Buckling",
-        "b": "Folding",
-        "c": "Barreling",
-        "d": "Hot tearing"
+        "a": "Elastic recovery",
+        "b": "Hot shortness (Speed cracking)",
+        "c": "Cold shut",
+        "d": "Die gaping"
       },
       "explanations": {
-        "a": "Buckling occurs when the length-to-diameter ratio is too large.",
-        "b": "Folding usually occurs in rolling processes.",
-        "c": "Barreling is a normal effect due to friction, not necessarily improper upsetting.",
-        "d": "Hot tearing is associated with casting."
-      },
-      "correctAnswer": "a",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "Why is lubrication important in the extrusion process?",
-      "answers": {
-        "a": "To improve surface finish and reduce friction",
-        "b": "To increase metal hardness",
-        "c": "To increase extrusion temperature",
-        "d": "To change the composition of metal"
-      },
-      "explanations": {
-        "a": "Lubrication reduces friction, extrusion force, and improves surface quality.",
-        "b": "Hardness is affected by deformation and heat treatment.",
-        "c": "Lubrication does not control temperature directly.",
-        "d": "Composition remains unchanged."
-      },
-      "correctAnswer": "a",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "In upsetting, what happens if the height-to-diameter ratio exceeds the recommended limit?",
-      "answers": {
-        "a": "Uniform deformation occurs",
-        "b": "Workpiece cracks immediately",
-        "c": "Buckling of the workpiece may occur",
-        "d": "Material becomes brittle"
-      },
-      "explanations": {
-        "a": "Uniform deformation requires proper ratios.",
-        "b": "Cracking is not instantaneous.",
-        "c": "Excessive height leads to instability and buckling.",
-        "d": "Brittleness is material-dependent, not geometry-based."
-      },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "What is the main advantage of hot extrusion over cold extrusion?",
-      "answers": {
-        "a": "Better dimensional accuracy",
-        "b": "Lower extrusion force requirement",
-        "c": "Superior surface finish",
-        "d": "No need for lubrication"
-      },
-      "explanations": {
-        "a": "Cold extrusion generally provides better accuracy.",
-        "b": "Hot extrusion reduces flow stress of the material.",
-        "c": "Surface finish is usually better in cold extrusion.",
-        "d": "Lubrication is still required."
+        "a": "Elastic recovery refers to the material expanding slightly after leaving the die, not surface cracking.",
+        "b": "Excessive speed generates friction heat that can melt grain boundaries, causing the 'fir-tree' cracking effect.",
+        "c": "Cold shut is a forging defect caused by metal folding over itself, not high-speed extrusion.",
+        "d": "Die gaping is an upsetting press defect related to insufficient clamping force."
       },
       "correctAnswer": "b",
-      "difficulty": "intermediate"
+      "difficulty": "medium"
     },
     {
-      "question": "Why is upsetting commonly used in bolt and fastener manufacturing?",
+      "question": "In upsetting theory, what is the maximum length of unsupported bar stock that can be upset in one blow without risk of buckling?",
       "answers": {
-        "a": "It increases bolt length",
-        "b": "It allows head formation by increasing cross-section",
-        "c": "It produces hollow products",
-        "d": "It eliminates the need for machining threads"
+        "a": "One time the diameter of the bar",
+        "b": "Three times the diameter of the bar",
+        "c": "Five times the diameter of the bar",
+        "d": "Ten times the diameter of the bar"
       },
       "explanations": {
-        "a": "Upsetting reduces length.",
-        "b": "Bolt heads are formed by localized upsetting.",
-        "c": "Hollow products are made by extrusion or piercing.",
-        "d": "Threads still require rolling or cutting."
+        "a": "One diameter is very safe but well below the established engineering limit for a single blow.",
+        "b": "The '3:1 Rule' states that if the length exceeds 3x the diameter, the bar will buckle (bend) instead of upsetting uniformly.",
+        "c": "Five diameters is too long and will result in the bar folding over rather than thickening.",
+        "d": "Ten diameters requires multiple stages of upsetting to prevent catastrophic buckling."
       },
       "correctAnswer": "b",
-      "difficulty": "intermediate"
+      "difficulty": "hard"
+    },
+    {
+      "question": "Why is 'Indirect Extrusion' theoretically more energy-efficient than 'Direct Extrusion'?",
+      "answers": {
+        "a": "Because it uses water-based lubricants instead of oil",
+        "b": "Because there is no relative motion between the billet and the container wall",
+        "c": "Because it allows the use of smaller flywheels",
+        "d": "Because it operates at room temperature"
+      },
+      "explanations": {
+        "a": "Lubricant type does not define the fundamental energy difference between direct and indirect methods.",
+        "b": "In indirect extrusion, the billet does not slide against the container, eliminating wall friction and reducing the required force by up to 30%.",
+        "c": "Extrusion presses are hydraulic; flywheels are characteristic of mechanical upsetting presses.",
+        "d": "Indirect extrusion can be performed hot or cold; its efficiency is due to friction reduction, not temperature."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "What is the primary function of a 'Dummy Block' in the extrusion process?",
+      "answers": {
+        "a": "To pre-heat the die before the billet arrives",
+        "b": "To protect the main ram from high heat and pressure while allowing air to escape",
+        "c": "To shear the discard from the finished profile",
+        "d": "To measure the temperature of the container"
+      },
+      "explanations": {
+        "a": "Dies are heated by external heaters, not by the dummy block.",
+        "b": "The dummy block acts as a sacrificial interface between the ram and the hot billet, often designed with a smaller diameter to allow for 'burping' air.",
+        "c": "Shearing is performed by a specialized shear blade, not the dummy block.",
+        "d": "Temperature is measured by thermocouples embedded in the container walls."
+      },
+      "correctAnswer": "b",
+      "difficulty": "medium"
+    },
+    {
+      "question": "How does 'Dead Metal Zone' formation affect the final product in extrusion?",
+      "answers": {
+        "a": "It improves the surface finish by acting as a filter",
+        "b": "It causes the center of the billet to flow faster than the edges, potentially trapping surface oxides",
+        "c": "It reduces the total tonnage required by the press",
+        "d": "It eliminates the need for a shear discard"
+      },
+      "explanations": {
+        "a": "The dead metal zone usually complicates the process and does not act as a functional filter.",
+        "b": "Stagnant metal in the corners forces the core to accelerate, which can pull surface impurities into the center of the profile (extrusion piping).",
+        "c": "Dead metal zones actually increase the required force due to internal redundant work.",
+        "d": "The presence of a dead metal zone is the exact reason why a 'discard' or 'butt' must be sheared off and thrown away."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
     }
   ]
 }
