@@ -12,12 +12,12 @@ Unlike standard vertical presses, an upsetter operates on a synchronized dual-sl
 
 ### B. Tonnage Distribution and Force Logic
 The machine must balance two distinct forces to maintain part quality:
-1. **Clamping Force ($F_c$):** The force required to hold the bar.
-2. **Upsetting Force ($F_u$):** The force required to deform the metal.
+1. **Clamping Force (Fc):** The force required to hold the bar.
+2. **Upsetting Force (Fu):** The force required to deform the metal.
 
-> **Rule of Thumb:** To ensure process stability, the machine is engineered so that $F_c$ is approximately **20–30% higher** than $F_u$. 
+> **Rule of Thumb:** To ensure process stability, the machine is engineered so that Fc is approximately **20–30% higher** than Fu. 
 > 
-> **Failure Mode:** If $F_u > F_c$, the dies will "gape" (separate slightly), causing "flash" (excess metal leakage) and dimensional inaccuracy.
+> **Failure Mode:** If Fu > Fc, the dies will "gape" (separate slightly), causing "flash" (excess metal leakage) and dimensional inaccuracy.
 
 ### C. The Energy Theory (Flywheel Drive)
 Most upsetting presses utilize a mechanical **Crank-Drive** system:
