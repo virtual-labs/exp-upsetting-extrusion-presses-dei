@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "In a horizontal upsetting press, what is the primary industrial reason that the Clamping Force (Fc) is engineered to be 20-30% higher than the Upsetting Force (Fu)?",
+      "question": "Q1. In a horizontal upsetting press, what is the primary industrial reason that the Clamping Force (Fc) is engineered to be 20-30% higher than the Upsetting Force (Fu)?",
       "answers": {
         "a": "To reduce the electrical consumption of the flywheel",
         "b": "To prevent the dies from 'gaping' and causing material flash",
@@ -19,7 +19,7 @@
       "difficulty": "medium"
     },
     {
-      "question": "Which mechanical principle explains why an extrusion press container is built using a 'shrink-fitted' multi-layer construction?",
+      "question": "Q2. Which mechanical principle explains why an extrusion press container is built using a 'shrink-fitted' multi-layer construction?",
       "answers": {
         "a": "To increase the total weight of the press for better stability",
         "b": "To provide a Pre-compressive Stress that counteracts internal radial tension",
@@ -36,7 +36,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "During the 'Burp Cycle' in an industrial extrusion procedure, what is the machine actually doing?",
+      "question": "Q3. During the 'Burp Cycle' in an industrial extrusion procedure, what is the machine actually doing?",
       "answers": {
         "a": "Cleaning the die face with high-pressure air",
         "b": "Momentarily releasing pressure to let trapped air escape the container",
@@ -53,7 +53,7 @@
       "difficulty": "medium"
     },
     {
-      "question": "Why are Upsetting Presses typically Mechanical (Flywheel-driven) while Extrusion Presses are Hydraulic?",
+      "question": "Q4. Why are Upsetting Presses typically Mechanical (Flywheel-driven) while Extrusion Presses are Hydraulic?",
       "answers": {
         "a": "Upsetting requires a constant slow speed, while extrusion requires high-speed impact",
         "b": "Hydraulic fluids are too expensive to use in horizontal forging machines",
@@ -70,7 +70,7 @@
       "difficulty": "medium"
     },
     {
-      "question": "What is the theoretical consequence of 'Elastic Stretching' in the tie-rods of a 5,000-ton extrusion press?",
+      "question": "Q5.What is the theoretical consequence of 'Elastic Stretching' in the tie-rods of a 5,000-ton extrusion press?",
       "answers": {
         "a": "The billet will become stuck in the induction furnace",
         "b": "The press will consume less hydraulic oil",
