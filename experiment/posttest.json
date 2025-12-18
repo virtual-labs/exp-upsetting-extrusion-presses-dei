@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Which specific phenomenon occurs if the extrusion speed is too high, leading to surface cracking of the profile?",
+      "question": "Q6. Which specific phenomenon occurs if the extrusion speed is too high, leading to surface cracking of the profile?",
       "answers": {
         "a": "Elastic recovery",
         "b": "Hot shortness (Speed cracking)",
@@ -19,7 +19,7 @@
       "difficulty": "medium"
     },
     {
-      "question": "In upsetting theory, what is the maximum length of unsupported bar stock that can be upset in one blow without risk of buckling?",
+      "question": "Q7. In upsetting theory, what is the maximum length of unsupported bar stock that can be upset in one blow without risk of buckling?",
       "answers": {
         "a": "One time the diameter of the bar",
         "b": "Three times the diameter of the bar",
@@ -36,7 +36,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Why is 'Indirect Extrusion' theoretically more energy-efficient than 'Direct Extrusion'?",
+      "question": "Q8. Why is 'Indirect Extrusion' theoretically more energy-efficient than 'Direct Extrusion'?",
       "answers": {
         "a": "Because it uses water-based lubricants instead of oil",
         "b": "Because there is no relative motion between the billet and the container wall",
@@ -53,7 +53,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "What is the primary function of a 'Dummy Block' in the extrusion process?",
+      "question": "Q9. What is the primary function of a 'Dummy Block' in the extrusion process?",
       "answers": {
         "a": "To pre-heat the die before the billet arrives",
         "b": "To protect the main ram from high heat and pressure while allowing air to escape",
@@ -70,7 +70,7 @@
       "difficulty": "medium"
     },
     {
-      "question": "How does 'Dead Metal Zone' formation affect the final product in extrusion?",
+      "question": "Q10. How does 'Dead Metal Zone' formation affect the final product in extrusion?",
       "answers": {
         "a": "It improves the surface finish by acting as a filter",
         "b": "It causes the center of the billet to flow faster than the edges, potentially trapping surface oxides",
