@@ -49,7 +49,7 @@ To manage forces ranging from **500 to 10,000 tons**, the press frame must be ex
 
 ---
 
-## 3. Critical Comparison of Press Theories
+## 3. Critical Comparison of presses
 
 | Feature | Upsetting Press Theory | Extrusion Press Theory |
 | :--- | :--- | :--- |
