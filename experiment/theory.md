@@ -34,7 +34,7 @@ Extrusion press theory is based on the **High-Pressure Vessel principle** and **
 
 ### A. Hydraulic Power and Flow Control
 Extrusion requires a sustained, long-stroke force, making **Hydraulic Systems** the industrial standard:
-* **Constant Velocity:** To maintain consistent metallurgical properties and surface finish, the ram must maintain a constant speed ($v$).
+* **Constant Velocity:** To maintain consistent metallurgical properties and surface finish, the ram must maintain a constant speed .
 * **Pressure Management:** The system must overcome the **Breakout Pressure** (initial peak force to start flow) and then transition to a lower **Running Pressure** as the billet length decreases.
 
 ### B. Pre-Stressed Container Theory
