@@ -22,7 +22,8 @@ The machine must balance two distinct forces to maintain part quality:
 ### C. The Energy Theory (Flywheel Drive)
 Most upsetting presses utilize a mechanical **Crank-Drive** system:
 * **Energy Storage:** Energy is stored in a massive rotating flywheel according to the formula: 
-  $$E = \frac{1}{2} I \omega^2$$
+  E = &frac12; I &omega;<sup>2</sup>
+
 * **Load Application:** Upon engagement of the clutch, kinetic energy is converted into a high-impact load. This high strain rate is ideal for filling complex die cavities before the workpiece cools.
 
 ---
