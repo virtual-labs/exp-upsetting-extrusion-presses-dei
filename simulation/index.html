@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Forming Virtual Lab - Simulation</title>
+    <style>
+        :root {
+            --primary: #0056b3; /* Academic Blue */
+            --primary-dark: #004494;
+            --secondary: #00a8cc;
+            --accent: #f0f4f8;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            color: var(--text-dark);
+            height: 100vh; /* Force full viewport height */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent body scroll */
+        }
+
+        /* --- Header --- */
+        header {
+            height: var(--header-height);
+            background: var(--white);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
+            flex-shrink: 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            height: 45px; /* Adjust based on your actual logo */
+            width: auto;
+        }
+
+        .titles h1 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .titles p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* --- Main Layout --- */
+        main {
+            display: flex;
+            flex: 1; /* Take remaining height */
+            padding: 1rem;
+            gap: 1rem;
+            height: calc(100vh - var(--header-height));
+        }
+
+        /* --- Left Column: Video & Info --- */
+        .stage-area {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Video Wrapper */
+        .video-wrapper {
+            flex-shrink: 0; /* Don't shrink video */
+            background: #000;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            width: 100%;
+            /* 16:9 Aspect Ratio hack not needed with flex, 
+               but max-height ensures it fits on screen */
+            max-height: 60vh; 
+            display: flex;
+            justify-content: center;
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            max-height: 60vh;
+            outline: none;
+            border-radius: var(--radius);
+        }
+
+        /* Info Card */
+        .info-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow-y: auto; /* Scroll text if it's too long */
+            flex-grow: 1; /* Fill remaining vertical space */
+            border: 1px solid #eee;
+        }
+
+        .info-card h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .info-card p {
+            line-height: 1.6;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- Right Column: Tabs & Playlist --- */
+        .sidebar {
+            flex: 1;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            min-width: 300px;
+            max-width: 400px;
+            height: 100%;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: #f1f3f5;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn:hover {
+            background: rgba(0,0,0,0.03);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            background: var(--white);
+        }
+
+        /* Playlist List */
+        .playlist-container {
+            flex: 1;
+            overflow-y: auto; /* Scroll only the list */
+        }
+
+        .video-btn {
+            display: flex;
+            align-items: flex-start; /* Align top for multi-line titles */
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: none;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid #f9f9f9;
+            transition: background 0.2s;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .video-btn:hover {
+            background-color: var(--accent);
+        }
+
+        .video-btn.active {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--primary);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .play-icon {
+            font-size: 0.8rem;
+            margin-top: 3px;
+            opacity: 0.6;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            body {
+                height: auto;
+                overflow: auto;
+            }
+            main {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem;
+            }
+            .stage-area {
+                height: auto;
+                flex: none;
+            }
+            .video-wrapper {
+                max-height: none;
+                height: auto;
+                padding-top: 56.25%; /* Force 16:9 on mobile */
+            }
+            video {
+                position: absolute;
+                top: 0; left: 0; height: 100%;
+            }
+            .sidebar {
+                max-width: 100%;
+                height: 500px; /* Fixed height for list on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+   <!-- <header>
+        <div class="logo-area">
+            <img src="dei.png" alt="Institute Logo">
+            <div class="titles">
+                <h1>Virtual Lab Simulation</h1>
+                <p>Department of Mechanical Engineering</p>
+            </div>
+        </div>
+    </header>-->
+
+    <main>
+        <section class="stage-area">
+            <div class="video-wrapper">
+                <video id="mainPlayer" controls poster="">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="info-card">
+                <span class="category-badge" id="vidCategory">Select Experiment</span>
+                <h2 id="vidTitle">Welcome to the Lab</h2>
+                <p id="vidDesc">Select an experiment category from the tabs on the right ("Upsetting" or "Extrusion"), then click a video to begin the simulation.</p>
+            </div>
+        </section>
+
+        <section class="sidebar">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('Upsetting Presses')">Upsetting</button>
+                <button class="tab-btn" onclick="switchTab('Extrusion Presses')">Extrusion</button>
+            </div>
+            <div class="playlist-container" id="playlist">
+                </div>
+        </section>
+    </main>
+
+    <script>
+        // Data
+        const experiments = [
+            {
+                category: "Upsetting Presses",
+                items: [
+                    { title: "Gravity Drop Hammer - Description", path: "Upseting_Presses/GravityDH.mp4", desc: "A detailed description of the Gravity Drop Hammer mechanism, focusing on the potential energy conversion used to deform the workpiece." },
+                    { title: "Gravity Drop Hammer - Kinematics", path: "Upseting_Presses/GRAVITY_DROP_HAMMER.mp4", desc: "Simulation showing the kinematic analysis of the drop hammer during operation, highlighting velocity and impact forces." },
+                    { title: "Knuckle-joint Press", path: "Upseting_Presses/KJ.mp4", desc: "Demonstration of the Knuckle-joint press, ideal for operations requiring high force at the bottom of the stroke." },
+                    { title: "Hydraulic Press Type-1", path: "Upseting_Presses/HP1.mp4", desc: "First configuration of a Hydraulic Press, utilizing fluid pressure to generate compressive force." },
+                    { title: "Hydraulic Press Type-2", path: "Upseting_Presses/HP2.mp4", desc: "Second configuration variant of the Hydraulic Press system." },
+                    { title: "Hydraulic Press Type-3", path: "Upseting_Presses/HP3.mp4", desc: "Third configuration variant showing distinct operational characteristics." },
+                    { title: "Mechanical Press", path: "Upseting_Presses/Mechanicalpress.mp4", desc: "A standard Mechanical Press setup driven by a flywheel and motor system." },
+                    { title: "Screw Press", path: "Upseting_Presses/screw_press.mp4", desc: "A friction screw press where energy is stored in a rotating flywheel." }
+                ]
+            },
+            {
+                category: "Extrusion Presses",
+                items: [
+                    { title: "Direct Extrusion Press", path: "Extrusion_Presses/Cold_Ext_fig1.mp4", desc: "Visualization of the Direct Extrusion process where the billet is pushed through the die." },
+                    { title: "Downward Indirect Extrusion", path: "Extrusion_Presses/Cold_Ext_fig2.mp4", desc: "Indirect extrusion setup oriented downwards, reducing friction forces." },
+                    { title: "Upward Indirect Extrusion", path: "Extrusion_Presses/Indirect_ext_2D2.mp4", desc: "Indirect extrusion process with the ram moving upwards." },
+                    { title: "Direct Extrusion with Mandrel", path: "Extrusion_Presses/ext3.mp4", desc: "Extrusion process utilizing a mandrel to create hollow cross-sections." },
+                    { title: "Direct Extrusion with Die", path: "Extrusion_Presses/extrusion1.mp4", desc: "Focused view on the die interaction during direct extrusion." },
+                    { title: "Indirect Extrusion with Die", path: "Extrusion_Presses/Indirect_ext_2D1.mp4", desc: "Die interaction analysis during the indirect extrusion process." },
+                    { title: "Extrusion with Pressing Tool", path: "Extrusion_Presses/Extrusion_process1.mp4", desc: "Detailed look at the pressing tool assembly." },
+                    { title: "Direct Extrusion - Industrial", path: "Extrusion_Presses/extrusion_process2.mp4", desc: "Simulation of a full-scale industrial direct extrusion setup." },
+                    { title: "Indirect Extrusion - Industrial", path: "Extrusion_Presses/indirect_extrusion.mp4", desc: "Simulation of a full-scale industrial indirect extrusion setup." },
+                    { title: "Hydrostatic Extrusion Press", path: "Extrusion_Presses/Hydrostatic_Extrusion.mp4", desc: "Hydrostatic extrusion utilizing fluid pressure to surround the billet, eliminating friction." }
+                ]
+            }
+        ];
+
+        // Elements
+        const playlistEl = document.getElementById('playlist');
+        const player = document.getElementById('mainPlayer');
+        const titleEl = document.getElementById('vidTitle');
+        const descEl = document.getElementById('vidDesc');
+        const catEl = document.getElementById('vidCategory');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+
+        // Initial State
+        let currentCategory = "Upsetting Presses";
+
+        function switchTab(categoryName) {
+            currentCategory = categoryName;
+            
+            // Update Tab UI
+            tabButtons.forEach(btn => {
+                if(btn.innerText.includes(categoryName.split(' ')[0])) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            renderPlaylist();
+        }
+
+        function renderPlaylist() {
+            playlistEl.innerHTML = ''; // Clear current list
+            
+            // Find data for current category
+            const categoryData = experiments.find(e => e.category === currentCategory);
+
+            if (categoryData) {
+                categoryData.items.forEach(item => {
+                    const btn = document.createElement('button');
+                    btn.className = 'video-btn';
+                    
+                    // Check if this video is currently playing to keep highlight
+                    const currentSrc = player.getAttribute('src'); // Use getAttribute to avoid full URL matching issues
+                    if(currentSrc === item.path) {
+                        btn.classList.add('active');
+                    }
+
+                    btn.innerHTML = `<span class="play-icon">▶</span> ${item.title}`;
+                    
+                    btn.addEventListener('click', () => {
+                        loadVideo(item, categoryData.category, btn);
+                    });
+                    
+                    playlistEl.appendChild(btn);
+                });
+            }
+        }
+
+        function loadVideo(item, category, btnElement) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.video-btn').forEach(b => b.classList.remove('active'));
+            // Add to clicked
+            btnElement.classList.add('active');
+
+            // Play Video
+            player.src = item.path;
+            player.play();
+
+            // Update Info
+            titleEl.innerText = item.title;
+            descEl.innerText = item.desc;
+            catEl.innerText = category;
+        }
+
+        // Initialize view
+        switchTab('Upsetting Presses'); 
+
+    </script>
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+</html>

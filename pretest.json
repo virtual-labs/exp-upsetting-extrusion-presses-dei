@@ -1,0 +1,90 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Q1. In a horizontal upsetting press, what is the primary industrial reason that the Clamping Force (Fc) is engineered to be 20-30% higher than the Upsetting Force (Fu)?",
+      "answers": {
+        "a": "To reduce the electrical consumption of the flywheel",
+        "b": "To prevent the dies from 'gaping' and causing material flash",
+        "c": "To allow the heading tool to move at a higher velocity",
+        "d": "To increase the thermal conductivity of the stationary die"
+      },
+      "explanations": {
+        "a": "Energy consumption is determined by the motor and flywheel inertia, not the ratio of die clamping forces.",
+        "b": "Higher clamping force ensures the dies stay perfectly sealed against the internal pressure of the deformation; lower clamping force allows metal to leak into the die seams (flash).",
+        "c": "Tool velocity is a function of the crankshaft speed and flywheel energy, independent of the clamping force ratio.",
+        "d": "Thermal conductivity is a material property of the tool steel and is not significantly altered by mechanical clamping pressure."
+      },
+      "correctAnswer": "b",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Q2. Which mechanical principle explains why an extrusion press container is built using a 'shrink-fitted' multi-layer construction?",
+      "answers": {
+        "a": "To increase the total weight of the press for better stability",
+        "b": "To provide a Pre-compressive Stress that counteracts internal radial tension",
+        "c": "To allow the liner to be easily removed by hand during maintenance",
+        "d": "To decrease the amount of lubrication required for the billet"
+      },
+      "explanations": {
+        "a": "While it adds weight, the primary engineering goal is managing internal stress rather than machine ballast.",
+        "b": "Shrink-fitting places the inner liner under compression so that the high internal pressures of extrusion only 'unload' that compression instead of creating dangerous tension.",
+        "c": "Shrink-fitted components are extremely difficult to separate and usually require specialized thermal equipment.",
+        "d": "Lubrication requirements are dictated by the material being extruded and the die geometry, not the container's structural layers."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Q3. During the 'Burp Cycle' in an industrial extrusion procedure, what is the machine actually doing?",
+      "answers": {
+        "a": "Cleaning the die face with high-pressure air",
+        "b": "Momentarily releasing pressure to let trapped air escape the container",
+        "c": "Increasing the temperature of the billet through friction",
+        "d": "Lubricating the dummy block with graphite"
+      },
+      "explanations": {
+        "a": "Die cleaning is a separate maintenance step and is not referred to as a burp cycle.",
+        "b": "This pause allows air caught between the billet and the container wall to be expelled, preventing internal voids or surface blisters.",
+        "c": "Frictional heating occurs during the actual extrusion stroke, not during the initial sealing pause.",
+        "d": "Lubrication is typically applied before the billet is loaded into the press, not during the pressure cycle."
+      },
+      "correctAnswer": "b",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Q4. Why are Upsetting Presses typically Mechanical (Flywheel-driven) while Extrusion Presses are Hydraulic?",
+      "answers": {
+        "a": "Upsetting requires a constant slow speed, while extrusion requires high-speed impact",
+        "b": "Hydraulic fluids are too expensive to use in horizontal forging machines",
+        "c": "Upsetting needs a high-energy 'strike' at the end of a stroke, while extrusion needs a sustained 'push' over a long distance",
+        "d": "Mechanical presses are easier to cool down than hydraulic presses"
+      },
+      "explanations": {
+        "a": "This reverses the actual requirements; upsetting needs impact speed, while extrusion needs steady flow.",
+        "b": "Cost is a factor, but the engineering requirement for high-impact energy is the primary reason for choosing mechanical drives.",
+        "c": "Mechanical flywheels excel at delivering sudden kinetic energy (impact), while hydraulic systems provide the controlled, long-duration force needed for continuous flow.",
+        "d": "Cooling systems are required for both, and heat management does not dictate the fundamental drive mechanism."
+      },
+      "correctAnswer": "c",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Q5.What is the theoretical consequence of 'Elastic Stretching' in the tie-rods of a 5,000-ton extrusion press?",
+      "answers": {
+        "a": "The billet will become stuck in the induction furnace",
+        "b": "The press will consume less hydraulic oil",
+        "c": "The alignment between the ram and the die will be lost, causing lopsided products",
+        "d": "The cooling fans will run at a higher RPM"
+      },
+      "explanations": {
+        "a": "The furnace is separate from the press frame and is unaffected by tie-rod deformation.",
+        "b": "Elastic stretching does not reduce the volume of oil needed to move the main cylinder.",
+        "c": "If the frame stretches unevenly under load, the centerlines shift, leading to eccentric wall thicknesses or warped profiles.",
+        "d": "Fan speed is controlled by thermal sensors in the hydraulic or motor systems, not by mechanical frame stretch."
+      },
+      "correctAnswer": "c",
+      "difficulty": "hard"
+    }
+  ]
+}
